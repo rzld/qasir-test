@@ -7,13 +7,14 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.Toolbar
+        <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#ffffff"
             android:elevation="0dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

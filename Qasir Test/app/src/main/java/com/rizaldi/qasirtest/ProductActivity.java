@@ -2,9 +2,11 @@ package com.rizaldi.qasirtest;
 
 import android.content.Intent;
 import android.media.Image;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -16,18 +18,26 @@ import org.w3c.dom.Text;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class ProductActivity extends AppCompatActivity {
+public class ProductActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar2);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         ImageView productImage = (ImageView) findViewById(R.id.productImage);
         TextView productName = (TextView) findViewById(R.id.productName2);
         TextView productPrice = (TextView) findViewById(R.id.productPrice);
         TextView description = (TextView) findViewById(R.id.description);
-        android.support.v7.widget.Toolbar toolbarText = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar2);
 
         Intent intent = getIntent();
         String productImageS = intent.getStringExtra(CustomAdapter.KEY_IMAGE);
@@ -42,6 +52,6 @@ public class ProductActivity extends AppCompatActivity {
         productName.setText(productNameS);
         productPrice.setText(formatRupiah.format((float)productPriceS));
         description.setText(Html.fromHtml(descriptionS, Html.FROM_HTML_MODE_COMPACT));
-        toolbarText.setTitle(productNameS);
+        toolbar.setTitle(productNameS);
     }
 }
